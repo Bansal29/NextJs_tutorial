@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const client = new PrismaClient();
+import client from "@/db";
 
 export async function POST(req: NextRequest) {
   try {
@@ -23,7 +21,7 @@ export async function POST(req: NextRequest) {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error during signup:", error);
+    console.log("Error during signup:", error);
 
     // Handle errors and send a 500 status if something goes wrong
     return NextResponse.json(
